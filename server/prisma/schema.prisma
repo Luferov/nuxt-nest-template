@@ -1,0 +1,82 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+generator nestgraphql {
+  provider = "node node_modules/prisma-nestjs-graphql"
+  output   = "../src/@generated"
+  reExport = Directories
+
+  fields_Validator_from  = "class-validator"
+  fields_Validator_input = true
+
+  decorate_1_type      = "@(Create|Update)@(One|Many)UserArgs"
+  decorate_1_field     = data
+  decorate_1_name      = ValidateNested
+  decorate_1_from      = "class-validator"
+  decorate_1_arguments = "[]"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  /// Идентификатор пользователя
+  id        Int     @id @default(autoincrement())
+  /// Логин пользователя
+  /// @Validator.MinLength(3)
+  /// @Validator.MaxLength(30)
+  username  String  @unique @db.VarChar(50)
+  /// @HideField()
+  password  String  @db.VarChar(256)
+  // Аватар пользователя
+  avatar    String?
+  /// Email пользователя
+  /// @Validator.IsEmail()
+  email     String  @unique @db.VarChar(50)
+  /// Фамилия
+  /// @Validator.MinLength(3)
+  /// @Validator.MaxLength(50)
+  lastName  String  @db.VarChar(50) @map("last_name")
+  /// Имя
+  /// @Validator.MinLength(3)
+  /// @Validator.MaxLength(50)
+  firstName String  @db.VarChar(50) @map("first_name")
+  /// Отчество
+  /// @Validator.MaxLength(50)
+  sirName   String? @db.VarChar(50) @map("sir_name")
+  /// Флаг активности пользователя
+  active   Boolean   @default(true)
+  /// День рожденья
+  /// @Validator.IsDate()
+  birthday  DateTime?
+  /// Роль пользователя
+  role Role @default(USER)
+  /// Пол пользователя
+  gender Gender @default(UNKNOWN)
+
+
+  /// Дата регистрации пользователя
+  createdAt DateTime @default(now()) @map("created_at")
+  /// Дата обновления
+  updatedAt DateTime @default(now()) @updatedAt @map("updated_at")
+
+  @@index([username, email])
+  @@map("users")
+}
+
+enum Role {
+  USER
+  ADMIN
+}
+
+enum Gender {
+  UNKNOWN
+  MALE
+  FEMALE
+}

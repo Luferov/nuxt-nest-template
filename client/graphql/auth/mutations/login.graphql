@@ -1,0 +1,11 @@
+ mutation Login($userLoginInput: UserLoginInput!) {
+   login(userLoginInput: $userLoginInput) {
+     accessToken
+     user {
+       id
+       username
+       __typename
+     }
+     __typename
+   }
+ }

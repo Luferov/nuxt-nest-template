@@ -1,0 +1,35 @@
+version: '3.9'
+
+services:
+  postgres:
+    container_name: postgres-nuxt-template
+    image: postgres:13.9
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: template
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 1234
+    ports:
+      - "5432:5432"
+    volumes:
+      - './server/db/postgres/data:/var/lib/postgresql/data'
+
+  pgadmin:
+    container_name: pgadmin-nuxt-template
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: pgadmin4@pgadmin.org
+      PGADMIN_DEFAULT_PASSWORD: admin
+    ports:
+      - '5050:80'
+    depends_on:
+      - postgres
+    links:
+      - postgres
+  
+  redis:
+    container_name: redis-nuxt-template
+    image: redis:latest
+    restart: unless-stopped
+    ports:
+      - '6379:6379'

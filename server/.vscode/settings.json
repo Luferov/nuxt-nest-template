@@ -1,0 +1,19 @@
+{
+  "cSpell.words": [
+    "Fastify",
+    "Luferov",
+    "nestjs"
+  ],
+  "editor.formatOnSave": true,
+  "[typescript]": {
+    "editor.tabSize": 2
+  },
+  "[javascript]": {
+    "editor.tabSize": 2,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascriptreact]": {
+    "editor.tabSize": 2,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+}

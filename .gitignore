@@ -1,0 +1,5 @@
+.idea/
+
+server/dist/
+server/node_modules/
+server/src/@generated/

@@ -1,0 +1,141 @@
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+enum Gender {
+  FEMALE
+  MALE
+  UNKNOWN
+}
+
+type Mutation {
+  login(userLoginInput: UserLoginInput!): UserLoginType!
+  register(userRegisterInput: UserRegisterInput!): UserLoginType
+}
+
+type Query {
+  me: User!
+}
+
+enum Role {
+  ADMIN
+  USER
+}
+
+type User {
+  """Флаг активности пользователя"""
+  active: Boolean!
+  avatar: String
+
+  """День рожденья"""
+  birthday: DateTime
+
+  """Дата регистрации пользователя"""
+  createdAt: DateTime!
+
+  """Email пользователя"""
+  email: String!
+
+  """Имя"""
+  firstName: String!
+
+  """Пол пользователя"""
+  gender: Gender!
+
+  """Идентификатор пользователя"""
+  id: ID!
+
+  """Фамилия"""
+  lastName: String!
+
+  """Роль пользователя"""
+  role: Role!
+
+  """Отчество"""
+  sirName: String
+
+  """Дата обновления"""
+  updatedAt: DateTime!
+
+  """Логин пользователя"""
+  username: String!
+}
+
+type UserAvgAggregate {
+  id: Float
+}
+
+type UserCountAggregate {
+  _all: Int!
+  active: Int!
+  avatar: Int!
+  birthday: Int!
+  createdAt: Int!
+  email: Int!
+  firstName: Int!
+  gender: Int!
+  id: Int!
+  lastName: Int!
+  role: Int!
+  sirName: Int!
+  updatedAt: Int!
+  username: Int!
+}
+
+input UserLoginInput {
+  password: String!
+  username: String!
+}
+
+type UserLoginType {
+  accessToken: String!
+  user: User!
+}
+
+type UserMaxAggregate {
+  active: Boolean
+  avatar: String
+  birthday: DateTime
+  createdAt: DateTime
+  email: String
+  firstName: String
+  gender: Gender
+  id: Int
+  lastName: String
+  role: Role
+  sirName: String
+  updatedAt: DateTime
+  username: String
+}
+
+type UserMinAggregate {
+  active: Boolean
+  avatar: String
+  birthday: DateTime
+  createdAt: DateTime
+  email: String
+  firstName: String
+  gender: Gender
+  id: Int
+  lastName: String
+  role: Role
+  sirName: String
+  updatedAt: DateTime
+  username: String
+}
+
+input UserRegisterInput {
+  """Date of birthday """
+  birthday: DateTime
+  email: String!
+  firstName: String!
+  lastName: String!
+  password: String!
+  sirName: String
+  username: String!
+}
+
+type UserSumAggregate {
+  id: Int
+}

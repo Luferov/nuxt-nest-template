@@ -1,0 +1,146 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type UserCountAggregate {
+  id: Int!
+  username: Int!
+  avatar: Int!
+  email: Int!
+  lastName: Int!
+  firstName: Int!
+  sirName: Int!
+  active: Int!
+  birthday: Int!
+  role: Int!
+  gender: Int!
+  createdAt: Int!
+  updatedAt: Int!
+  _all: Int!
+}
+
+type UserAvgAggregate {
+  id: Float
+}
+
+type UserSumAggregate {
+  id: Int
+}
+
+type UserMinAggregate {
+  id: Int
+  username: String
+  avatar: String
+  email: String
+  lastName: String
+  firstName: String
+  sirName: String
+  active: Boolean
+  birthday: DateTime
+  role: Role
+  gender: Gender
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+enum Role {
+  USER
+  ADMIN
+}
+
+enum Gender {
+  UNKNOWN
+  MALE
+  FEMALE
+}
+
+type UserMaxAggregate {
+  id: Int
+  username: String
+  avatar: String
+  email: String
+  lastName: String
+  firstName: String
+  sirName: String
+  active: Boolean
+  birthday: DateTime
+  role: Role
+  gender: Gender
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+type User {
+  """Идентификатор пользователя"""
+  id: ID!
+
+  """Логин пользователя"""
+  username: String!
+  avatar: String
+
+  """Email пользователя"""
+  email: String!
+
+  """Фамилия"""
+  lastName: String!
+
+  """Имя"""
+  firstName: String!
+
+  """Отчество"""
+  sirName: String
+
+  """Флаг активности пользователя"""
+  active: Boolean!
+
+  """День рожденья"""
+  birthday: DateTime
+
+  """Роль пользователя"""
+  role: Role!
+
+  """Пол пользователя"""
+  gender: Gender!
+
+  """Дата регистрации пользователя"""
+  createdAt: DateTime!
+
+  """Дата обновления"""
+  updatedAt: DateTime!
+}
+
+type UserLoginType {
+  accessToken: String!
+  user: User!
+}
+
+type Query {
+  me: User!
+}
+
+type Mutation {
+  login(userLoginInput: UserLoginInput!): UserLoginType!
+  register(userRegisterInput: UserRegisterInput!): UserLoginType
+}
+
+input UserLoginInput {
+  username: String!
+  password: String!
+}
+
+input UserRegisterInput {
+  username: String!
+  password: String!
+  email: String!
+  lastName: String!
+  firstName: String!
+  sirName: String
+
+  """Date of birthday """
+  birthday: DateTime
+}

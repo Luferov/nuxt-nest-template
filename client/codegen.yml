@@ -1,0 +1,16 @@
+overwrite: true
+schema: 'schema.graphql'
+documents: 'graphql/**/*.graphql'
+generates:
+  ./types/graphql.ts:
+    hooks:
+      afterOneFileWrite:
+        - eslint --fix
+    plugins:
+      - typescript
+      - typescript-operations
+      # - typescript-vue-apollo
+    config:
+      enumsAsTypes: true
+      # withCompositionFunctions: true
+      # vueCompositionApiImportFrom: vue

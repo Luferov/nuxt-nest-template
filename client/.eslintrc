@@ -1,0 +1,49 @@
+{
+  "extends": [
+    "plugin:import/typescript",
+    "plugin:vue/vue3-recommended",
+    "plugin:nuxt/recommended",
+    "prettier"
+  ],
+  "settings": {
+    "import/resolver": {
+      "typescript": {
+        "alwaysTryTypes": true
+      }
+    }
+  },
+  "parserOptions": {
+    "extraFileExtensions": [
+      ".vue"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "project": "./tsconfig.json"
+  },
+  "rules": {},
+  "overrides": [
+    {
+      "files": [
+        "**/*.vue"
+      ],
+      "rules": {
+        "no-use-before-define": "off",
+        "@typescript-eslint/no-use-before-define": "off",
+        "vue/multi-word-component-names": "off",
+        "vue/valid-attribute-name": "off",
+        "vue/valid-model-definition": "off"
+      }
+    },
+    {
+      "files": [
+        "**/*.ts"
+      ],
+      "rules": {
+        "no-undef": "off",
+        "vue/prefer-import-from-vue": "off",
+        "import/no-mutable-exports": "off",
+        "vue/valid-model-definition": "off",
+        "@typescript-eslint/no-unused-vars": "off"
+      }
+    }
+  ]
+}
