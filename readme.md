@@ -21,8 +21,3 @@ Libraries:
 
 
 ## Graphql
-
-Provide graphql schema from server to client
-```shell
-ln -s ./client/schema.graphql ./server/src/schema.graphql
-```
