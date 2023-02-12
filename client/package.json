@@ -3,7 +3,7 @@
   "scripts": {
     "🛠️ Development": "",
     "build": "nuxt build",
-    "dev": "concurrently -k npm:nuxt-dev npm:watch-codegen",
+    "dev:client": "concurrently -k npm:nuxt-dev npm:watch-codegen",
     "nuxt-dev": "nuxt dev",
     "watch-codegen": "graphql-codegen --watch",
     "🏗️ Build": "",

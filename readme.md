@@ -16,3 +16,13 @@ Libraries:
 - [pug](https://pugjs.org/api/getting-started.html)
 
 ## Server
+
+
+
+
+## Graphql
+
+Provide graphql schema from server to client
+```shell
+ln -s ./client/schema.graphql ./server/src/schema.graphql
+```

@@ -15,7 +15,7 @@ import { AppService } from './app.service'
 		ConfigModule.forRoot(),
 		GraphQLModule.forRoot<ApolloDriverConfig>({
 			driver: ApolloDriver,
-			autoSchemaFile: join(process.cwd(), 'src/schema.graphql'),
+			autoSchemaFile: join(process.cwd(), '../client/schema.graphql'),
 			installSubscriptionHandlers: true,
 			playground: true,
 		}),
