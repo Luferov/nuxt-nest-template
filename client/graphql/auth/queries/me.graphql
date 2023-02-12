@@ -1,0 +1,7 @@
+#import "../fragments/user-fields.graphql"
+
+query Me {
+  me {
+    ...UserFields
+  }
+}

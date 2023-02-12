@@ -1,0 +1,16 @@
+fragment UserFields on User {
+  id
+  username
+  avatar
+  email
+  lastName
+  firstName
+  sirName
+  birthday
+  role
+  gender
+  active
+  createdAt
+  updatedAt
+  __typename
+}

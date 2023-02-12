@@ -157,9 +157,16 @@ export type UserSumAggregate = {
   id?: Maybe<Scalars['Int']>;
 };
 
+export type UserFieldsFragment = { __typename: 'User', id: string, username: string, avatar?: string | null, email: string, lastName: string, firstName: string, sirName?: string | null, birthday?: any | null, role: Role, gender: Gender, active: boolean, createdAt: any, updatedAt: any };
+
 export type LoginMutationVariables = Exact<{
   userLoginInput: UserLoginInput;
 }>;
 
 
-export type LoginMutation = { __typename?: 'Mutation', login: { __typename: 'UserLoginType', accessToken: string, user: { __typename: 'User', id: string, username: string } } };
+export type LoginMutation = { __typename?: 'Mutation', login: { __typename: 'UserLoginType', accessToken: string, user: { __typename: 'User', id: string, username: string, avatar?: string | null, email: string, lastName: string, firstName: string, sirName?: string | null, birthday?: any | null, role: Role, gender: Gender, active: boolean, createdAt: any, updatedAt: any } } };
+
+export type MeQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type MeQuery = { __typename?: 'Query', me: { __typename: 'User', id: string, username: string, avatar?: string | null, email: string, lastName: string, firstName: string, sirName?: string | null, birthday?: any | null, role: Role, gender: Gender, active: boolean, createdAt: any, updatedAt: any } };
