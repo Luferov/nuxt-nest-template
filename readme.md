@@ -13,7 +13,6 @@ Nuxt modules:
 Libraries:
 - [Vuetify❤️](https://next.vuetifyjs.com/)
 - [VeeValidate](https://vee-validate.logaretm.com/)
-- [pug](https://pugjs.org/api/getting-started.html)
 
 ## Server
 

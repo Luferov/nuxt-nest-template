@@ -9666,6 +9666,11 @@ yocto-queue@^0.1.0:
   resolved "https://registry.yarnpkg.com/yocto-queue/-/yocto-queue-0.1.0.tgz#0294eb3dee05028d31ee1a5fa2c556a6aaf10a1b"
   integrity sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==
 
+yup-locales@^1.2.11:
+  version "1.2.11"
+  resolved "https://registry.yarnpkg.com/yup-locales/-/yup-locales-1.2.11.tgz#b62814f3630c24d89e8a196595301fab2a16ac1d"
+  integrity sha512-unlFaF6brV0WGS6rlNffKflEaU8LpBghnatABsaQ3X8ho3yekeQyhlp+QIYQWDw0vAejBB9a2TS+vq6635kzFg==
+
 yup@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/yup/-/yup-1.0.0.tgz#de4e32f9d2e45b1ab428076fc916c84db861b8ce"
