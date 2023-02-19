@@ -6,7 +6,7 @@ generator client {
 }
 
 generator nestgraphql {
-  provider = "node node_modules/prisma-nestjs-graphql"
+  provider = "prisma-nestjs-graphql"
   output   = "../src/@generated"
   reExport = Directories
 
@@ -27,39 +27,38 @@ datasource db {
 
 model User {
   /// Идентификатор пользователя
-  id        Int     @id @default(autoincrement())
+  id        Int       @id @default(autoincrement())
   /// Логин пользователя
   /// @Validator.MinLength(3)
   /// @Validator.MaxLength(30)
-  username  String  @unique @db.VarChar(50)
+  username  String    @unique @db.VarChar(50)
   /// @HideField()
-  password  String  @db.VarChar(256)
+  password  String    @db.VarChar(256)
   // Аватар пользователя
   avatar    String?
   /// Email пользователя
   /// @Validator.IsEmail()
-  email     String  @unique @db.VarChar(50)
+  email     String    @unique @db.VarChar(50)
   /// Фамилия
   /// @Validator.MinLength(3)
   /// @Validator.MaxLength(50)
-  lastName  String  @db.VarChar(50) @map("last_name")
+  lastName  String    @map("last_name") @db.VarChar(50)
   /// Имя
   /// @Validator.MinLength(3)
   /// @Validator.MaxLength(50)
-  firstName String  @db.VarChar(50) @map("first_name")
+  firstName String    @map("first_name") @db.VarChar(50)
   /// Отчество
   /// @Validator.MaxLength(50)
-  sirName   String? @db.VarChar(50) @map("sir_name")
+  sirName   String?   @map("sir_name") @db.VarChar(50)
   /// Флаг активности пользователя
-  active   Boolean   @default(true)
+  active    Boolean   @default(true)
   /// День рожденья
   /// @Validator.IsDate()
   birthday  DateTime?
   /// Роль пользователя
-  role Role @default(USER)
+  role      Role      @default(USER)
   /// Пол пользователя
-  gender Gender @default(UNKNOWN)
-
+  gender    Gender    @default(UNKNOWN)
 
   /// Дата регистрации пользователя
   createdAt DateTime @default(now()) @map("created_at")
