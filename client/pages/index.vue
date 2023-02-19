@@ -9,7 +9,8 @@ useHead({
 })
 </script>
 <template>
-	<div class="text-2xl">Hello, world! | {{ $t('title') }}
-	<v-btn to="/auth/logout">Нажми</v-btn>
+	<div class="text-2xl">
+		Hello, world! | {{ $t('title') }}
+		<v-btn to="/auth/logout"> Нажми</v-btn>
 	</div>
 </template>

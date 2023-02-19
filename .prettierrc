@@ -3,7 +3,5 @@
   "singleQuote": true,
   "useTabs": true,
   "printWidth": 120,
-  "semi": false,
-  "trailingComma": "es5",
-  "arrowParens": "avoid"
+  "semi": false
 }

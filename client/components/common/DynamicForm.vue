@@ -5,6 +5,3 @@ const props = defineProps<{
 	schema: DynamicSchemaType
 }>()
 </script>
-<template lang="pug">
-
-</template>

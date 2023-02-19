@@ -5,7 +5,7 @@ import { definePageMeta, useI18n } from '#imports'
 const { t } = useI18n()
 
 definePageMeta({
-	middleware: 'auth'
+	middleware: 'auth',
 })
 
 useHead({

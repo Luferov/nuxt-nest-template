@@ -1,5 +1,5 @@
-<script setup lang='ts'>
-import { useHead } from "#head";
+<script setup lang="ts">
+import { useHead } from '#head'
 
 useHead({
 	titleTemplate: '%s | Template for Nuxt/Nest',

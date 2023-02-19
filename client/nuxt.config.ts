@@ -1,4 +1,4 @@
-import pugPlugin from 'vite-plugin-pug'
+// import pugPlugin from 'vite-plugin-pug'
 import eslintPlugin from 'vite-plugin-eslint'
 
 export default defineNuxtConfig({
@@ -30,7 +30,7 @@ export default defineNuxtConfig({
 		],
 	},
 	vite: {
-		plugins: [pugPlugin(), eslintPlugin()],
+		plugins: [eslintPlugin()],
 	},
 	build: {
 		transpile: ['vuetify'],

@@ -1,0 +1,25 @@
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: client
+    schedule:
+      interval: daily
+      time: "02:00"
+    target-branch: main
+    open-pull-requests-limit: 10
+
+  - package-ecosystem: npm
+    directory: server
+    schedule:
+      interval: daily
+      time: "03:00"
+    target-branch: main
+    open-pull-requests-limit: 10
+
+  - package-ecosystem: npm
+    directory: ./
+    schedule:
+      interval: daily
+      time: "04:00"
+    target-branch: main
+    open-pull-requests-limit: 10

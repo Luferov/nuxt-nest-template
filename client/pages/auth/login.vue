@@ -14,7 +14,7 @@ const localePath = useLocalePath()
 const authStore = useAuthStore()
 
 definePageMeta({
-	middleware: 'guest'
+	middleware: 'guest',
 })
 
 useHead({ title: t('auth.title') })
@@ -33,7 +33,10 @@ const schema = object({
 	password: string().required().min(4).label(t('auth.password')),
 })
 
-const handleSubmit = async (values: UserLoginInput, { setErrors }: FormActions<{ username: string, password: string }>) => {
+const handleSubmit = async (
+	values: UserLoginInput,
+	{ setErrors }: FormActions<{ username: string; password: string }>
+) => {
 	try {
 		await mutate({ userLoginInput: values })
 	} catch (e) {
@@ -50,13 +53,15 @@ const handleSubmit = async (values: UserLoginInput, { setErrors }: FormActions<{
 					<Field v-slot="{ field, errors }" name="username">
 						<v-text-field v-bind="field" :label="$t('auth.username')" :error-messages="errors" />
 					</Field>
-					<Field v-slot="{ field, errors}" name="password">
+					<Field v-slot="{ field, errors }" name="password">
 						<v-text-field v-bind="field" :label="$t('auth.password')" :error-messages="errors" type="password" />
 					</Field>
 				</v-card-text>
 				<v-card-actions>
 					<v-spacer />
-					<v-btn color="primary" type="submit">{{ $t('auth.singing') }}</v-btn>
+					<v-btn color="primary" type="submit">
+						{{ $t('auth.singing') }}
+					</v-btn>
 				</v-card-actions>
 			</v-card>
 		</Form>

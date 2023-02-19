@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useAuthStore } from '~/stores'
 import { definePageMeta, useApollo, useLocalePath } from '#imports'
+
 import { useRouter } from '#app'
 
 definePageMeta({
