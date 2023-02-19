@@ -11,7 +11,8 @@
     "server:dev": "yarn --cwd client run dev:server"
   },
   "devDependencies": {
-    "prettier": "^2.8.4"
+    "prettier": "^2.8.4",
+    "concurrently": "^7.6.0",
   },
   "workspaces": [
     "client",

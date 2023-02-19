@@ -1,5 +1,5 @@
 import { Inject, Injectable } from '@nestjs/common'
-import { PrismaService } from '../common/services/prisma.service'
+import { PrismaService } from '@common/services/prisma.service'
 import { GraphQLError } from 'graphql'
 import { JwtService } from '@nestjs/jwt'
 import { UserLoginInput, UserLoginType, UserRegisterInput } from './dto'
