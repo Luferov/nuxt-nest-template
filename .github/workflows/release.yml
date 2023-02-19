@@ -105,7 +105,7 @@ jobs:
   build-server:
     name: Build server
     runs-on: ubuntu-latest
-    needs: test_server
+    needs: test-server
     permissions:
       contents: read
       packages: write
