@@ -1,9 +1,8 @@
 name: Release
 
 on:
-  push:
-    tag:
-      - 'v*'
+  tags:
+    - 'v*'
 
 env:
   REGISTRY: ghcr.io
