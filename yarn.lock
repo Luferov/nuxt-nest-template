@@ -8302,10 +8302,10 @@ jiti@^1.15.0, jiti@^1.16.2, jiti@^1.17.1:
   resolved "https://registry.yarnpkg.com/jiti/-/jiti-1.17.1.tgz#264daa43ee89a03e8be28c3d712ccc4eb9f1e8ed"
   integrity sha512-NZIITw8uZQFuzQimqjUxIrIcEdxYDFIe/0xYfIlVXTkiBjjyBEvgasj5bb0/cHtPRD/NziPbT312sFrkI5ALpw==
 
-joi@^17.7.1:
-  version "17.8.0"
-  resolved "https://registry.yarnpkg.com/joi/-/joi-17.8.0.tgz#6b2dd135eaffd93e46e2a3bcfc652cc6b4a163e4"
-  integrity sha512-2XKR4IFBiB15t/HBx73Xc0/2/X05++GW/mDpNVOb96EscWFx13Rf9sfaTOa9i53F6AKtRPCtX53kfOTDddVL/Q==
+joi@^17.8.1:
+  version "17.8.1"
+  resolved "https://registry.yarnpkg.com/joi/-/joi-17.8.1.tgz#82f08b9b7b16e770537914155e78f3fe185b9d18"
+  integrity sha512-Zoafe6E2kQ+hkkJQSBnOxA8beb2LF33keCxZP3vSy7qTHj9/2GAEQ9KLwfe+PR35WvspwNz0jWajDIHLnCKfpg==
   dependencies:
     "@hapi/address" "^5.1.0"
     "@hapi/formula" "^3.0.2"
