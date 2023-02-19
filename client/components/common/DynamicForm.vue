@@ -2,6 +2,6 @@
 import { DynamicSchemaType } from '~/types/dynamic-form'
 
 const props = defineProps<{
-	schema: DynamicSchemaType
+  schema: DynamicSchemaType
 }>()
 </script>

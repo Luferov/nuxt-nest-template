@@ -1,7 +1,7 @@
-import type { Ref } from '@vue/reactivity'
+import type { Ref } from 'vue'
+import { computed } from 'vue'
 import type { ExtractSingleKey } from '@vue/apollo-composable/dist/util/ExtractSingleKey'
 import type { DeepNonNullable, DeepRequired } from 'ts-essentials'
-import { computed } from 'vue'
 
 export type UseResultReturn<T> = Readonly<Ref<Readonly<T>>>
 
@@ -19,7 +19,7 @@ export type UseResultReturn<T> = Readonly<Ref<Readonly<T>>>
  * @returns Readonly ref with `undefined` or the resolved `result`.
  */
 export function useResult<TResult, TResultKey extends keyof NonNullable<TResult> = keyof NonNullable<TResult>>(
-	result: Ref<TResult | undefined>
+  result: Ref<TResult | undefined>
 ): UseResultReturn<undefined | ExtractSingleKey<NonNullable<TResult>, TResultKey>>
 
 /**
@@ -37,12 +37,12 @@ export function useResult<TResult, TResultKey extends keyof NonNullable<TResult>
  * @returns Readonly ref with the `defaultValue` or the resolved `result`.
  */
 export function useResult<
-	TResult,
-	TDefaultValue,
-	TResultKey extends keyof NonNullable<TResult> = keyof NonNullable<TResult>
+  TResult,
+  TDefaultValue,
+  TResultKey extends keyof NonNullable<TResult> = keyof NonNullable<TResult>
 >(
-	result: Ref<TResult | undefined>,
-	defaultValue: TDefaultValue
+  result: Ref<TResult | undefined>,
+  defaultValue: TDefaultValue
 ): UseResultReturn<TDefaultValue | ExtractSingleKey<NonNullable<TResult>, TResultKey>>
 
 /**
@@ -60,32 +60,32 @@ export function useResult<
  * @returns Readonly ref with the `defaultValue` or the resolved and `pick`-mapped `result`
  */
 export function useResult<TResult, TDefaultValue, TReturnValue>(
-	result: Ref<TResult | undefined>,
-	defaultValue: TDefaultValue | undefined,
-	pick: (data: DeepRequired<DeepNonNullable<TResult>>) => TReturnValue
+  result: Ref<TResult | undefined>,
+  defaultValue: TDefaultValue | undefined,
+  pick: (data: DeepRequired<DeepNonNullable<TResult>>) => TReturnValue
 ): UseResultReturn<TDefaultValue | TReturnValue>
 
 export function useResult<TResult, TDefaultValue, TReturnValue>(
-	result: Ref<TResult | undefined>,
-	defaultValue?: TDefaultValue,
-	pick?: (data: DeepRequired<DeepNonNullable<TResult>>) => TReturnValue
+  result: Ref<TResult | undefined>,
+  defaultValue?: TDefaultValue,
+  pick?: (data: DeepRequired<DeepNonNullable<TResult>>) => TReturnValue
 ): UseResultReturn<TResult | TResult[keyof TResult] | TDefaultValue | TReturnValue | undefined> {
-	return computed(() => {
-		const value = result.value
-		if (value) {
-			if (pick) {
-				try {
-					return pick(value as DeepRequired<DeepNonNullable<TResult>>)
-				} catch (e) {}
-			} else {
-				const keys = Object.keys(value)
-				if (keys.length === 1) {
-					return value[keys[0] as keyof TResult]
-				} else {
-					return value
-				}
-			}
-		}
-		return defaultValue
-	})
+  return computed(() => {
+    const value = result.value
+    if (value) {
+      if (pick) {
+        try {
+          return pick(value as DeepRequired<DeepNonNullable<TResult>>)
+        } catch (e) {}
+      } else {
+        const keys = Object.keys(value)
+        if (keys.length === 1) {
+          return value[keys[0] as keyof TResult]
+        } else {
+          return value
+        }
+      }
+    }
+    return defaultValue
+  })
 }

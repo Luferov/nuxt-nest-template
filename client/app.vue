@@ -2,11 +2,11 @@
 import { useHead } from '#head'
 
 useHead({
-	titleTemplate: '%s | Template for Nuxt/Nest',
+  titleTemplate: '%s | Template for Nuxt/Nest',
 })
 </script>
 <template>
-	<NuxtLayout>
-		<NuxtPage />
-	</NuxtLayout>
+  <NuxtLayout>
+    <NuxtPage />
+  </NuxtLayout>
 </template>

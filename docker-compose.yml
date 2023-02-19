@@ -3,7 +3,7 @@ version: '3.9'
 services:
   postgres:
     container_name: postgres-nuxt-template
-    image: postgres:13.9
+    image: postgres:latest
     restart: unless-stopped
     environment:
       POSTGRES_DB: template
@@ -12,7 +12,7 @@ services:
     ports:
       - "5432:5432"
     volumes:
-      - './server/db/postgres/data:/var/lib/postgresql/data'
+      - './db/postgres/data:/var/lib/postgresql/data'
 
   pgadmin:
     container_name: pgadmin-nuxt-template

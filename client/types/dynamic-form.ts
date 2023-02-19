@@ -1,8 +1,8 @@
 export type DynamicFormFieldType = {
-	label: string
-	name: string
-	as: string
+  label: string
+  name: string
+  as: string
 }
 export type DynamicSchemaType = {
-	fields: DynamicFormFieldType[]
+  fields: DynamicFormFieldType[]
 }

@@ -5,7 +5,7 @@ import { definePageMeta, useApollo, useLocalePath } from '#imports'
 import { useRouter } from '#app'
 
 definePageMeta({
-	middleware: 'auth',
+  middleware: 'auth',
 })
 const { onLogout } = useApollo()
 const authStore = useAuthStore()
@@ -18,7 +18,7 @@ router.push(localePath({ name: 'index' }))
 </script>
 
 <template>
-	<v-container>
-		<v-progress-circular color="primary" indeterminate />
-	</v-container>
+  <v-container>
+    <v-progress-circular color="primary" indeterminate />
+  </v-container>
 </template>
