@@ -9,7 +9,7 @@ WORKDIR /usr/src/app
 
 COPY . .
 
-RUN yarn && yarn run build
+RUN yarn && yarn run generate && yarn run build
 
 FROM node:19.6.0
 
