@@ -1,9 +1,9 @@
-FROM node:19.6.0
+FROM node:19.6.0 as builder
 
 ENV HOST 0.0.0.0
 
-RUN apt-get update -y \
-    && apt-get upgrade -y && \
+RUN apt-get update -y && \
+    apt-get upgrade -y && \
     yarn cache clean --all
 
 RUN mkdir -p /usr/src/app
@@ -16,6 +16,12 @@ RUN yarn && \
     yarn run build && \
     rm -rf $(ls -A | grep -v .output)
 
+
+FROM node:19.6.0
+
+COPY --from=builder /usr/src/app/.output ./.output
+
+ENV HOST 0.0.0.0
 EXPOSE 3000
 
-ENTRYPOINT ["node", ".output/server/index.mjs"]
+CMD ["node", ".output/server/index.mjs"]
