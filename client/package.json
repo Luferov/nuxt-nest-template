@@ -1,6 +1,6 @@
 {
   "name": "client",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "private": true,
   "scripts": {
     "🛠️ Development": "",
@@ -13,6 +13,7 @@
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "✨ Utilities": "",
+    "lint": "eslint .",
     "codegen-schema": "graphql-codegen",
     "update-schema": "graphql-codegen -c ./codegen.download.yml && node ./schemaQuery.js"
   },

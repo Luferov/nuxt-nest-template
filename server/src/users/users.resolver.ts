@@ -6,9 +6,9 @@ import { CurrentUser } from '@auth/auth.decorators'
 
 @Resolver()
 export class UsersResolver {
-	@Query(() => User)
-	@UseGuards(GqlAuthGuard)
-	async me(@CurrentUser() user: User): Promise<User> {
-		return user
-	}
+  @Query(() => User)
+  @UseGuards(GqlAuthGuard)
+  async me(@CurrentUser() user: User): Promise<User> {
+    return user
+  }
 }

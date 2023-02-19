@@ -10,34 +10,34 @@ import { bcryptServiceProvider, passportServiceProvider } from './providers'
 import { PrismaService } from '@common/services/prisma.service'
 
 @Module({
-	imports: [
-		UsersModule,
-		PassportModule.register({
-			defaultStrategy: 'jwt',
-			// property: 'user',
-			session: false,
-		}),
-		JwtModule.registerAsync({
-			imports: [ConfigModule],
-			useFactory: (config: ConfigService) => ({
-				secret: config.get<string>('SECRET_KEY'),
-				signOptions: {
-					expiresIn: '24h',
-				},
-			}),
-			inject: [ConfigService],
-		}),
-		ConfigModule,
-	],
-	providers: [
-		passportServiceProvider,
-		bcryptServiceProvider,
-		PrismaService,
-		AuthService,
-		AuthResolver,
-		JwtStrategy,
-		LocalStrategy,
-	],
-	exports: [AuthService],
+  imports: [
+    UsersModule,
+    PassportModule.register({
+      defaultStrategy: 'jwt',
+      // property: 'user',
+      session: false,
+    }),
+    JwtModule.registerAsync({
+      imports: [ConfigModule],
+      useFactory: (config: ConfigService) => ({
+        secret: config.get<string>('SECRET_KEY'),
+        signOptions: {
+          expiresIn: '24h',
+        },
+      }),
+      inject: [ConfigService],
+    }),
+    ConfigModule,
+  ],
+  providers: [
+    passportServiceProvider,
+    bcryptServiceProvider,
+    PrismaService,
+    AuthService,
+    AuthResolver,
+    JwtStrategy,
+    LocalStrategy,
+  ],
+  exports: [AuthService],
 })
 export class AuthModule {}

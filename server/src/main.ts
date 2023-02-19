@@ -5,21 +5,21 @@ import { AppModule } from './app.module'
 import { PrismaService } from '@common/services/prisma.service'
 
 async function bootstrap() {
-	const app = await NestFactory.create(AppModule, { logger: new Logger() })
-	const prismaService = app.get(PrismaService)
-	await prismaService.enableShutdownHooks(app)
+  const app = await NestFactory.create(AppModule, { logger: new Logger() })
+  const prismaService = app.get(PrismaService)
+  await prismaService.enableShutdownHooks(app)
 
-	app.useGlobalPipes(
-		new ValidationPipe({
-			transform: true,
-			disableErrorMessages: true,
-		})
-	)
+  app.useGlobalPipes(
+    new ValidationPipe({
+      transform: true,
+      disableErrorMessages: true,
+    })
+  )
 
-	const port = process.env.PORT || 8000
+  const port = process.env.PORT || 8000
 
-	await app.listen(port)
+  await app.listen(port)
 
-	Logger.log(`🚀 Application is running on: http://localhost:${port}/`)
+  Logger.log(`🚀 Application is running on: http://localhost:${port}/`)
 }
 bootstrap()

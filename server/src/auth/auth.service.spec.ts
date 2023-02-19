@@ -6,24 +6,24 @@ import { ConfigService } from '@nestjs/config'
 import { bcryptServiceProvider, passportServiceProvider } from './providers'
 
 describe('AuthService', () => {
-	let service: AuthService
+  let service: AuthService
 
-	beforeEach(async () => {
-		const module: TestingModule = await Test.createTestingModule({
-			providers: [
-				AuthService,
-				PrismaService,
-				JwtService,
-				ConfigService,
-				bcryptServiceProvider,
-				passportServiceProvider,
-			],
-		}).compile()
+  beforeEach(async () => {
+    const module: TestingModule = await Test.createTestingModule({
+      providers: [
+        AuthService,
+        PrismaService,
+        JwtService,
+        ConfigService,
+        bcryptServiceProvider,
+        passportServiceProvider,
+      ],
+    }).compile()
 
-		service = module.get<AuthService>(AuthService)
-	})
+    service = module.get<AuthService>(AuthService)
+  })
 
-	it('should be defined', () => {
-		expect(service).toBeDefined()
-	})
+  it('should be defined', () => {
+    expect(service).toBeDefined()
+  })
 })

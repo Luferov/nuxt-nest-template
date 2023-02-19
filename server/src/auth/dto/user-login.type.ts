@@ -3,9 +3,9 @@ import { User } from '@generated/user'
 
 @ObjectType()
 export class UserLoginType {
-	@Field()
-	accessToken: string
+  @Field()
+  accessToken: string
 
-	@Field(() => User)
-	user: User
+  @Field(() => User)
+  user: User
 }

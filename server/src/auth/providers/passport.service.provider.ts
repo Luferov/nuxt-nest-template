@@ -5,8 +5,8 @@ export const PASSPORT = Symbol('PASSPORT')
 export type Passport = passport.Authenticator
 
 export const passportServiceProvider: FactoryProvider = {
-	provide: PASSPORT,
-	useFactory: (): Passport => {
-		return passport
-	},
+  provide: PASSPORT,
+  useFactory: (): Passport => {
+    return passport
+  },
 }

@@ -11,22 +11,22 @@ import { AppController } from './app.controller'
 import { AppService } from './app.service'
 
 @Module({
-	imports: [
-		ConfigModule.forRoot(),
-		GraphQLModule.forRoot<ApolloDriverConfig>({
-			driver: ApolloDriver,
-			autoSchemaFile: join(process.cwd(), '../client/schema.graphql'),
-			installSubscriptionHandlers: true,
-			playground: true,
-		}),
-		AuthModule,
-		UsersModule,
-	],
-	controllers: [AppController],
-	providers: [AppService, PrismaService],
+  imports: [
+    ConfigModule.forRoot(),
+    GraphQLModule.forRoot<ApolloDriverConfig>({
+      driver: ApolloDriver,
+      autoSchemaFile: join(process.cwd(), '../client/schema.graphql'),
+      installSubscriptionHandlers: true,
+      playground: true,
+    }),
+    AuthModule,
+    UsersModule,
+  ],
+  controllers: [AppController],
+  providers: [AppService, PrismaService],
 })
 export class AppModule {
-	configure(consumer: MiddlewareConsumer) {
-		consumer.apply().forRoutes('*')
-	}
+  configure(consumer: MiddlewareConsumer) {
+    consumer.apply().forRoutes('*')
+  }
 }

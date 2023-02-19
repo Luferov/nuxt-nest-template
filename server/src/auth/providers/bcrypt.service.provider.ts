@@ -6,8 +6,8 @@ export const BCRYPT = Symbol('BCRYPT')
 export type Bcrypt = typeof bcrypt
 
 export const bcryptServiceProvider: FactoryProvider = {
-	provide: BCRYPT,
-	useFactory: (): Bcrypt => {
-		return bcrypt
-	},
+  provide: BCRYPT,
+  useFactory: (): Bcrypt => {
+    return bcrypt
+  },
 }

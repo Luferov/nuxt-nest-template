@@ -8,22 +8,22 @@ import { CurrentUser } from '@auth/auth.decorators'
 
 @Resolver(() => User)
 export class AuthResolver {
-	constructor(private readonly authService: AuthService) {}
+  constructor(private readonly authService: AuthService) {}
 
-	@Mutation(() => UserLoginType)
-	@UseGuards(LocalAuthGuard)
-	async login(
-		@Args('userLoginInput') userLoginInput: UserLoginInput,
-		@CurrentUser() user: User
-	): Promise<UserLoginType> {
-		return {
-			accessToken: await this.authService.createJwtToken(user),
-			user,
-		}
-	}
+  @Mutation(() => UserLoginType)
+  @UseGuards(LocalAuthGuard)
+  async login(
+    @Args('userLoginInput') userLoginInput: UserLoginInput,
+    @CurrentUser() user: User
+  ): Promise<UserLoginType> {
+    return {
+      accessToken: await this.authService.createJwtToken(user),
+      user,
+    }
+  }
 
-	@Mutation(() => UserLoginType, { nullable: true })
-	async register(@Args('userRegisterInput') userRegisterInput: UserRegisterInput): Promise<UserLoginType> {
-		return await this.authService.register(userRegisterInput)
-	}
+  @Mutation(() => UserLoginType, { nullable: true })
+  async register(@Args('userRegisterInput') userRegisterInput: UserRegisterInput): Promise<UserLoginType> {
+    return await this.authService.register(userRegisterInput)
+  }
 }
