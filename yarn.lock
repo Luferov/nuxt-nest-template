@@ -1187,26 +1187,26 @@
     lodash "~4.17.0"
     tslib "~2.4.0"
 
-"@graphql-codegen/plugin-helpers@^4.0.0":
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/@graphql-codegen/plugin-helpers/-/plugin-helpers-4.0.0.tgz#9c10e4700dc6efe657781dff47347d0c99674061"
-  integrity sha512-vgNGTanT36hC4RAC/LAThMEjDvnu3WCyx6MtKZcPUtfCWFxbUAr88+OarGl1LAEiOef0agIREC7tIBXCqjKkJA==
+"@graphql-codegen/plugin-helpers@^4.0.0", "@graphql-codegen/plugin-helpers@^4.1.0":
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/@graphql-codegen/plugin-helpers/-/plugin-helpers-4.1.0.tgz#4b193c12d6bb458f1f2af48c200bc86617884f60"
+  integrity sha512-xvSHJb9OGb5CODIls0AI1rCenLz+FuiaNPCsfHMCNsLDjOZK2u0jAQ9zUBdc/Wb+21YXZujBCc0Vm1QX+Zz0nw==
   dependencies:
     "@graphql-tools/utils" "^9.0.0"
     change-case-all "1.0.15"
     common-tags "1.8.2"
     import-from "4.0.0"
     lodash "~4.17.0"
-    tslib "~2.4.0"
+    tslib "~2.5.0"
 
-"@graphql-codegen/schema-ast@^3.0.0":
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/@graphql-codegen/schema-ast/-/schema-ast-3.0.0.tgz#3311a58184f885853d33d8272c527ff5bdf3023b"
-  integrity sha512-5gC8nNk/bxufS2LBSpaPExRgn6eNo8LQdtwDtwfM9XGEzt/F6rIBQoyOmqqwkiBmgu1PHHH8kLZMBYvYB1x5DA==
+"@graphql-codegen/schema-ast@^3.0.0", "@graphql-codegen/schema-ast@^3.0.1":
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/@graphql-codegen/schema-ast/-/schema-ast-3.0.1.tgz#37b458bb57b95715a9eb4259341c856dae2a461d"
+  integrity sha512-rTKTi4XiW4QFZnrEqetpiYEWVsOFNoiR/v3rY9mFSttXFbIwNXPme32EspTiGWmEEdHY8UuTDtZN3vEcs/31zw==
   dependencies:
-    "@graphql-codegen/plugin-helpers" "^4.0.0"
+    "@graphql-codegen/plugin-helpers" "^4.1.0"
     "@graphql-tools/utils" "^9.0.0"
-    tslib "~2.4.0"
+    tslib "~2.5.0"
 
 "@graphql-codegen/typescript-document-nodes@^3.0.0":
   version "3.0.0"
