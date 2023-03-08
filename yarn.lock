@@ -12271,10 +12271,10 @@ vue@^3.2.47:
     "@vue/server-renderer" "3.2.47"
     "@vue/shared" "3.2.47"
 
-vuetify@^3.1.4:
-  version "3.1.5"
-  resolved "https://registry.yarnpkg.com/vuetify/-/vuetify-3.1.5.tgz#6cf56891f2fa7502feec1a7b50bef6aa4bc4623e"
-  integrity sha512-6DJYNuKrbxuL+MThmj+VbtvK9X3mY+s8Rqj1juj4RyeLSIAhE3byZf8Bo2/GxrU5Jv3zR07LZdpiq4wIl0ONzA==
+vuetify@^3.1.7:
+  version "3.1.7"
+  resolved "https://registry.yarnpkg.com/vuetify/-/vuetify-3.1.7.tgz#e4b73b906a4bda8bc7a119fb0736c6a602556c00"
+  integrity sha512-1hDQ4ISszEKP9S9nOhUNsv3rZ4Zr1UYn4+G4PIlcS9b16Jy4/VS2KDrLyTG8Shnv9enizg31iF5iVnlj96OEeA==
 
 walker@^1.0.8:
   version "1.0.8"
