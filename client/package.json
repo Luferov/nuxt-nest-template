@@ -1,6 +1,6 @@
 {
   "name": "client",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "private": true,
   "scripts": {
     "🛠️ Development": "",
@@ -18,13 +18,13 @@
     "update-schema": "graphql-codegen -c ./codegen.download.yml && node ./schemaQuery.js"
   },
   "devDependencies": {
-    "@graphql-codegen/add": "^4.0.0",
+    "@graphql-codegen/add": "^4.0.1",
     "@graphql-codegen/cli": "^3.2.2",
-    "@graphql-codegen/introspection": "^3.0.0",
+    "@graphql-codegen/introspection": "^3.0.1",
     "@graphql-codegen/schema-ast": "^3.0.1",
-    "@graphql-codegen/typescript": "^3.0.0",
+    "@graphql-codegen/typescript": "^3.0.2",
     "@graphql-codegen/typescript-document-nodes": "^3.0.2",
-    "@graphql-codegen/typescript-operations": "^3.0.0",
+    "@graphql-codegen/typescript-operations": "^3.0.2",
     "@graphql-codegen/typescript-vue-apollo": "^3.3.7",
     "@nuxt/devtools": "^0.2.5",
     "@nuxtjs/color-mode": "^3.2.0",
@@ -39,7 +39,7 @@
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-vue": "^9.9.0",
     "prettier": "^2.8.4",
-    "sass": "^1.58.0",
+    "sass": "^1.58.3",
     "vite-plugin-eslint": "^1.8.1"
   },
   "dependencies": {
