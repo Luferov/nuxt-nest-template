@@ -7,7 +7,11 @@ const { t } = useI18n()
 useHead({
   title: t('title'),
 })
+
+const count = ref<number>(0)
 </script>
 <template>
-  <div class="text-2xl">Hello, world!</div>
+  <div class="text-2xl">
+    <v-btn @click="count++">{{ count }}</v-btn>
+  </div>
 </template>

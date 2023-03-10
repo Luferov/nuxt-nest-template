@@ -14,6 +14,7 @@ CREATE TABLE "users" (
     "last_name" VARCHAR(50) NOT NULL,
     "first_name" VARCHAR(50) NOT NULL,
     "sir_name" VARCHAR(50),
+    "active" BOOLEAN NOT NULL DEFAULT true,
     "birthday" TIMESTAMP(3),
     "role" "Role" NOT NULL DEFAULT 'USER',
     "gender" "Gender" NOT NULL DEFAULT 'UNKNOWN',

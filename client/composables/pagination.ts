@@ -2,7 +2,13 @@ import defu from 'defu'
 import type { ComputedRef } from 'vue'
 import { computed, ref } from 'vue'
 
-import type { PageInfo, PaginationInterface, PaginationOptions, PaginationVariablesType } from '~/types/pagination'
+import type {
+  PageInfo,
+  PaginationInterface,
+  PaginationMode,
+  PaginationOptions,
+  PaginationVariablesType,
+} from '~/types/pagination'
 import { cursor } from '~/services/graphql-relay'
 
 /**
@@ -17,8 +23,8 @@ export function useOffsetPagination(paginationOptions: PaginationOptions = {}): 
   }
   const options: PaginationOptions = defu(paginationOptions, defaultOptions)
 
-  const page = ref<number>(options.page!)
-  const pageSize = ref<number>(options.pageSize!)
+  const page = ref<number>(options.page as number)
+  const pageSize = ref<number>(options.pageSize as number)
   const count = ref<number>(0)
   const totalCount = ref<number>(0)
 
@@ -68,7 +74,7 @@ export function useOffsetPagination(paginationOptions: PaginationOptions = {}): 
   }
 
   return {
-    mode: options.mode!,
+    mode: options.mode as PaginationMode,
     page,
     pageSize,
     totalCount,
@@ -112,7 +118,7 @@ export function useCursorPagination(paginationOptions: PaginationOptions = {}): 
   }))
 
   const fetchMore: ComputedRef<boolean> = computed<boolean>(() => {
-    return pageInfo.value.hasNextPage!
+    return pageInfo.value.hasNextPage as boolean
   })
 
   /**
