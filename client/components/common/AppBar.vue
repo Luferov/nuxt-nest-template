@@ -22,6 +22,7 @@ const authStore = useAuthStore()
         </v-menu>
       </template>
       <template v-else>
+        <v-btn :to="localePath({ name: 'auth-register' })" stacked>{{ $t('auth.register') }}</v-btn>
         <v-btn :to="localePath({ name: 'auth-login' })" stacked>{{ $t('auth.login') }}</v-btn>
       </template>
     </template>
