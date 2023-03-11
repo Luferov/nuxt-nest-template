@@ -18,10 +18,12 @@
     "forceConsistentCasingInFileNames": false,
     "noFallthroughCasesInSwitch": false,
     "paths": {
-      "@generated/*": ["src/@generated/*"],
+      "@minio/*": ["src/minio/*"],
       "@common/*": ["src/common/*"],
       "@auth/*": ["src/auth/*"],
-      "@users/*": ["src/users/*"]
+      "@users/*": ["src/users/*"],
+      "@files/*": ["src/files/*"],
+      "@generated/*": ["src/@generated/*"]
     }
   }
 }

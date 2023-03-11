@@ -5,7 +5,6 @@
 type UserCountAggregate {
   id: Int!
   username: Int!
-  avatar: Int!
   email: Int!
   lastName: Int!
   firstName: Int!
@@ -30,7 +29,6 @@ type UserSumAggregate {
 type UserMinAggregate {
   id: Int
   username: String
-  avatar: String
   email: String
   lastName: String
   firstName: String
@@ -62,7 +60,6 @@ enum Gender {
 type UserMaxAggregate {
   id: Int
   username: String
-  avatar: String
   email: String
   lastName: String
   firstName: String
@@ -75,13 +72,51 @@ type UserMaxAggregate {
   updatedAt: DateTime
 }
 
+type UserCount {
+  files: Int!
+}
+
+type File {
+  """Идентификатор файла"""
+  id: ID!
+
+  """Название файла"""
+  name: String!
+
+  """Название файла в баскете"""
+  key: String!
+
+  """Название баскета для хранения файла"""
+  bucket: String!
+
+  """Медиа файла"""
+  mimetype: String!
+
+  """Тип файла"""
+  kind: KindFile!
+
+  """Дата создания"""
+  createdAt: DateTime!
+
+  """Дата обновления"""
+  updatedAt: DateTime!
+  userId: Int!
+
+  """Файл пользователя, если null - файл системный"""
+  user: User
+}
+
+enum KindFile {
+  DEFAULT
+  AVATAR
+}
+
 type User {
   """Идентификатор пользователя"""
   id: ID!
 
   """Логин пользователя"""
   username: String!
-  avatar: String
 
   """Email пользователя"""
   email: String!
@@ -112,6 +147,8 @@ type User {
 
   """Дата обновления"""
   updatedAt: DateTime!
+  files: [File!]
+  _count: UserCount!
 }
 
 type UserLoginType {

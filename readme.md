@@ -20,3 +20,11 @@ Libraries:
 
 
 ## Graphql
+
+
+## Development
+
+Создать символическую ссылку на .env из папки server
+```shell
+ln -s ./server/.env .env
+```
