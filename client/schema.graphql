@@ -6,6 +6,7 @@ type UserCountAggregate {
   id: Int!
   username: Int!
   email: Int!
+  avatar: Int!
   lastName: Int!
   firstName: Int!
   sirName: Int!
@@ -30,6 +31,7 @@ type UserMinAggregate {
   id: Int
   username: String
   email: String
+  avatar: String
   lastName: String
   firstName: String
   sirName: String
@@ -61,6 +63,7 @@ type UserMaxAggregate {
   id: Int
   username: String
   email: String
+  avatar: String
   lastName: String
   firstName: String
   sirName: String
@@ -92,23 +95,15 @@ type File {
   """Медиа файла"""
   mimetype: String!
 
-  """Тип файла"""
-  kind: KindFile!
-
   """Дата создания"""
   createdAt: DateTime!
 
   """Дата обновления"""
   updatedAt: DateTime!
-  userId: Int!
+  userId: Int
 
   """Файл пользователя, если null - файл системный"""
   user: User
-}
-
-enum KindFile {
-  DEFAULT
-  AVATAR
 }
 
 type User {
@@ -120,6 +115,9 @@ type User {
 
   """Email пользователя"""
   email: String!
+
+  """Аватар пользователя"""
+  avatar: String
 
   """Фамилия"""
   lastName: String!
@@ -163,6 +161,7 @@ type Query {
 type Mutation {
   login(userLoginInput: UserLoginInput!): UserLoginType!
   register(userRegisterInput: UserRegisterInput!): UserLoginType
+  uploadAvatar(media: Upload!): User!
 }
 
 input UserLoginInput {
@@ -181,3 +180,6 @@ input UserRegisterInput {
   """Date of birthday """
   birthday: DateTime
 }
+
+"""The `Upload` scalar type represents a file upload."""
+scalar Upload

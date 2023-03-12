@@ -12,6 +12,29 @@ export type Scalars = {
   Float: number;
   /** A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format. */
   DateTime: any;
+  /** The `Upload` scalar type represents a file upload. */
+  Upload: any;
+};
+
+export type File = {
+  __typename?: 'File';
+  /** Название баскета для хранения файла */
+  bucket: Scalars['String'];
+  /** Дата создания */
+  createdAt: Scalars['DateTime'];
+  /** Идентификатор файла */
+  id: Scalars['ID'];
+  /** Название файла в баскете */
+  key: Scalars['String'];
+  /** Медиа файла */
+  mimetype: Scalars['String'];
+  /** Название файла */
+  name: Scalars['String'];
+  /** Дата обновления */
+  updatedAt: Scalars['DateTime'];
+  /** Файл пользователя, если null - файл системный */
+  user?: Maybe<User>;
+  userId?: Maybe<Scalars['Int']>;
 };
 
 export type Gender =
@@ -23,6 +46,7 @@ export type Mutation = {
   __typename?: 'Mutation';
   login: UserLoginType;
   register?: Maybe<UserLoginType>;
+  uploadAvatar: User;
 };
 
 
@@ -33,6 +57,11 @@ export type MutationLoginArgs = {
 
 export type MutationRegisterArgs = {
   userRegisterInput: UserRegisterInput;
+};
+
+
+export type MutationUploadAvatarArgs = {
+  media: Scalars['Upload'];
 };
 
 export type Query = {
@@ -46,8 +75,10 @@ export type Role =
 
 export type User = {
   __typename?: 'User';
+  _count: UserCount;
   /** Флаг активности пользователя */
   active: Scalars['Boolean'];
+  /** Аватар пользователя */
   avatar?: Maybe<Scalars['String']>;
   /** День рожденья */
   birthday?: Maybe<Scalars['DateTime']>;
@@ -55,6 +86,7 @@ export type User = {
   createdAt: Scalars['DateTime'];
   /** Email пользователя */
   email: Scalars['String'];
+  files?: Maybe<Array<File>>;
   /** Имя */
   firstName: Scalars['String'];
   /** Пол пользователя */
@@ -76,6 +108,11 @@ export type User = {
 export type UserAvgAggregate = {
   __typename?: 'UserAvgAggregate';
   id?: Maybe<Scalars['Float']>;
+};
+
+export type UserCount = {
+  __typename?: 'UserCount';
+  files: Scalars['Int'];
 };
 
 export type UserCountAggregate = {

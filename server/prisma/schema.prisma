@@ -35,6 +35,8 @@ model User {
   /// Email пользователя
   /// @Validator.IsEmail()
   email     String    @unique @db.VarChar(50)
+  /// Аватар пользователя
+  avatar    String?
   /// Фамилия
   /// @Validator.MinLength(3)
   /// @Validator.MaxLength(50)
@@ -81,20 +83,18 @@ enum Gender {
 // Модель хранения файлов
 model File {
   /// Идентификатор файла
-  id       Int      @id @default(autoincrement())
+  id       Int    @id @default(autoincrement())
   /// Название файла
   /// @Validator.MinLength(3)
-  name     String   @db.VarChar(512)
+  name     String @db.VarChar(512)
   /// Название файла в баскете
   /// @Validator.MinLength(3)
-  key      String   @db.VarChar(512)
+  key      String @db.VarChar(512)
   /// Название баскета для хранения файла
   /// @Validator.MinLength(3)
-  bucket   String   @db.VarChar(64)
+  bucket   String @db.VarChar(64)
   /// Медиа файла
-  mimetype String   @db.VarChar(64)
-  /// Тип файла
-  kind     KindFile @default(DEFAULT)
+  mimetype String @db.VarChar(64)
 
   /// Дата создания
   createdAt DateTime @default(now()) @map("created_at")
@@ -102,12 +102,7 @@ model File {
   updatedAt DateTime @default(now()) @updatedAt @map("updated_at")
   /// Файл пользователя, если null - файл системный
   user      User?    @relation(fields: [userId], references: [id])
-  userId    Int      @map("user_id")
+  userId    Int?     @map("user_id")
 
   @@map("files")
-}
-
-enum KindFile {
-  DEFAULT // Default file
-  AVATAR // Avatar file
 }

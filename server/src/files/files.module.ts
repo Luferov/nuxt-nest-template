@@ -1,6 +1,8 @@
 import { Module } from '@nestjs/common'
 import { MinioModule } from '@minio/minio.module'
 import { ConfigModule, ConfigService } from '@nestjs/config'
+import { PrismaService } from '@common/services/prisma.service'
+
 import { FilesResolver } from './files.resolver'
 import { FilesService } from './files.service'
 
@@ -19,7 +21,7 @@ import { FilesService } from './files.service'
     }),
     ConfigModule,
   ],
-  providers: [FilesResolver, FilesService],
+  providers: [FilesResolver, FilesService, PrismaService],
   exports: [FilesResolver, FilesService],
 })
 export class FilesModule {}
