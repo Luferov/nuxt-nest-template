@@ -49,7 +49,7 @@
     "helmet": "^6.0.1",
     "joi": "^17.8.3",
     "lodash": "^4.17.21",
-    "minio": "^7.0.32",
+    "minio": "^7.0.33",
     "passport": "^0.6.0",
     "passport-jwt": "^4.0.1",
     "passport-local": "^1.0.0",
