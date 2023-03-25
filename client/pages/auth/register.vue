@@ -58,7 +58,6 @@ const handleRegister = async (
     const { passwordConfirmation, ...userRegisterInput } = values // eslint-disable-line @typescript-eslint/no-unused-vars
     await mutate({ userRegisterInput })
   } catch (e) {
-    console.log(e)
     setErrors({ username: 'Ошибка регистрации' })
   }
 }

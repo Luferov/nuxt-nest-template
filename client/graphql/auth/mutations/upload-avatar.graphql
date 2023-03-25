@@ -1,0 +1,7 @@
+mutation UploadAvatar($fileUpload: FileUploadInput!) {
+  uploadAvatar(fileUpload: $fileUpload) {
+    id
+    avatar
+    __typename
+  }
+}

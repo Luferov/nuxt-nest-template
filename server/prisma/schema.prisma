@@ -15,6 +15,12 @@ generator nestgraphql {
   decorate_1_name      = ValidateNested
   decorate_1_from      = "class-validator"
   decorate_1_arguments = "[]"
+
+  decorate_2_type      = "@(User)Count"
+  decorate_2_field     = "_count"
+  decorate_2_name      = "HideField"
+  decorate_2_from      = "@nestjs/graphql"
+  decorate_2_arguments = "[]"
 }
 
 datasource db {
@@ -83,18 +89,16 @@ enum Gender {
 // Модель хранения файлов
 model File {
   /// Идентификатор файла
-  id       Int    @id @default(autoincrement())
+  id     Int    @id @default(autoincrement())
   /// Название файла
   /// @Validator.MinLength(3)
-  name     String @db.VarChar(512)
+  name   String @db.VarChar(512)
   /// Название файла в баскете
   /// @Validator.MinLength(3)
-  key      String @db.VarChar(512)
+  key    String @db.VarChar(512)
   /// Название баскета для хранения файла
   /// @Validator.MinLength(3)
-  bucket   String @db.VarChar(64)
-  /// Медиа файла
-  mimetype String @db.VarChar(64)
+  bucket String @db.VarChar(64)
 
   /// Дата создания
   createdAt DateTime @default(now()) @map("created_at")

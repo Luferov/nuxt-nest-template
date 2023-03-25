@@ -4,6 +4,7 @@ const prisma = new PrismaClient()
 
 async function main() {
   console.log('Start seed operations')
+  await prisma.$connect()
   // create dummy user
   // const user = await prisma.user.create({
   //   data: {

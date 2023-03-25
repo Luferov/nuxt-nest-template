@@ -6,16 +6,19 @@ const authStore = useAuthStore()
 <template>
   <v-app-bar :title="$t('title')" floating>
     <template #prepend>
-      <v-img src="/favicon.ico" />
+      <v-img src="/favicon.ico" width="52" />
     </template>
     <template #append>
       <template v-if="authStore.loginIn">
         <v-menu>
           <template #activator="{ props }">
-            <v-avatar v-bind="props" color="primary"></v-avatar>
+            <v-avatar :image="authStore.avatarUrl" v-bind="props" color="primary">{{ authStore.initials }}</v-avatar>
           </template>
           <v-list>
-            <v-list-item :to="localePath({ name: 'auth-logout' })">
+            <v-list-item :to="localePath({ name: 'profile-me' })" prepend-icon="mdi-account-circle">
+              <v-list-item-title>{{ $t('profile.me') }}</v-list-item-title>
+            </v-list-item>
+            <v-list-item :to="localePath({ name: 'auth-logout' })" prepend-icon="mdi-logout">
               <v-list-item-title>{{ $t('auth.logout') }}</v-list-item-title>
             </v-list-item>
           </v-list>

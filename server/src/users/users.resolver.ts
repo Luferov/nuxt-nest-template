@@ -4,9 +4,7 @@ import { UseGuards } from '@nestjs/common'
 import { GqlAuthGuard } from '@auth/auth.guard'
 import { CurrentUser } from '@auth/auth.decorators'
 import { UsersService } from '@users/users.service'
-
-import { FileUpload } from 'graphql-upload/Upload.js'
-import GraphQLUpload from 'graphql-upload/GraphQLUpload.js'
+import { FileUploadInput } from '@files/dto/file-upload.input'
 
 @Resolver()
 export class UsersResolver {
@@ -21,8 +19,8 @@ export class UsersResolver {
   @Mutation(() => User)
   async uploadAvatar(
     @CurrentUser() user: User,
-    @Args({ name: 'media', type: () => GraphQLUpload }) media: FileUpload
+    @Args({ name: 'fileUpload', type: () => FileUploadInput }) fileUpload: FileUploadInput
   ): Promise<User> {
-    return this.usersService.updateAvatar(media, user)
+    return this.usersService.updateAvatar(fileUpload, user)
   }
 }

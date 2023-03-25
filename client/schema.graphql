@@ -75,10 +75,6 @@ type UserMaxAggregate {
   updatedAt: DateTime
 }
 
-type UserCount {
-  files: Int!
-}
-
 type File {
   """Идентификатор файла"""
   id: ID!
@@ -91,9 +87,6 @@ type File {
 
   """Название баскета для хранения файла"""
   bucket: String!
-
-  """Медиа файла"""
-  mimetype: String!
 
   """Дата создания"""
   createdAt: DateTime!
@@ -146,7 +139,13 @@ type User {
   """Дата обновления"""
   updatedAt: DateTime!
   files: [File!]
-  _count: UserCount!
+}
+
+type FileUploadType {
+  fileName: String!
+  bucket: String!
+  name: String!
+  presignedUrl: String!
 }
 
 type UserLoginType {
@@ -156,12 +155,13 @@ type UserLoginType {
 
 type Query {
   me: User!
+  presignedPutUrl(fileName: String!): FileUploadType!
 }
 
 type Mutation {
   login(userLoginInput: UserLoginInput!): UserLoginType!
   register(userRegisterInput: UserRegisterInput!): UserLoginType
-  uploadAvatar(media: Upload!): User!
+  uploadAvatar(fileUpload: FileUploadInput!): User!
 }
 
 input UserLoginInput {
@@ -181,5 +181,8 @@ input UserRegisterInput {
   birthday: DateTime
 }
 
-"""The `Upload` scalar type represents a file upload."""
-scalar Upload
+input FileUploadInput {
+  fileName: String!
+  bucket: String!
+  name: String!
+}

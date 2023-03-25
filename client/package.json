@@ -43,18 +43,18 @@
     "vite-plugin-eslint": "^1.8.1"
   },
   "dependencies": {
-    "@mdi/font": "^7.1.96",
-    "@nuxtjs/apollo": "^5.0.0-alpha.5",
+    "@mdi/font": "^7.2.96",
+    "@nuxtjs/apollo": "^5.0.0-alpha.6",
     "@nuxtjs/robots": "^3.0.0",
-    "@nuxtjs/tailwindcss": "^6.4.1",
+    "@nuxtjs/tailwindcss": "^6.6.4",
     "@pinia/nuxt": "^0.4.7",
-    "@vee-validate/i18n": "^4.7.4",
+    "@vee-validate/i18n": "^4.8.3",
     "@vueuse/core": "^9.13.0",
     "graphql-tag": "^2.12.6",
-    "nuxt": "^3.2.3",
+    "nuxt": "^3.3.2",
     "pinia": "^2.0.33",
-    "vee-validate": "^4.7.4",
-    "vuetify": "^3.1.8",
+    "vee-validate": "^4.8.4",
+    "vuetify": "^3.1.11",
     "yup": "^1.0.2",
     "yup-locales": "^1.2.12"
   }

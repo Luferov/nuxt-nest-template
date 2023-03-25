@@ -1,11 +1,11 @@
-import { ReadStream } from 'fs'
-import { FileUpload } from 'graphql-upload/Upload'
+import * as Joi from 'joi'
 import { Injectable, NotAcceptableException } from '@nestjs/common'
 import { PrismaService } from '@common/services/prisma.service'
 import { File } from '@generated/file'
 import { User } from '@generated/user'
 import { MinioService } from '@minio/minio.service'
-import { stream2buffer } from '@files/utils'
+import { FileUploadType } from '@files/dto/file-upload.type'
+import { FileUploadInput } from '@files/dto/file-upload.input'
 
 @Injectable()
 export class FilesService {
@@ -13,23 +13,50 @@ export class FilesService {
 
   /**
    * Функция для добавления файла
+   * @param uploadFile Загруженный с помощью minio файл
    * @param user Пользователь
-   * @param media
    */
-  async add(media: FileUpload, user?: User): Promise<File> {
-    if (!media.createReadStream) {
-      throw new NotAcceptableException('Необходимо загрузить файл')
-    }
-    const mediaBuffer = await stream2buffer(media.createReadStream() as unknown as ReadStream)
-    const objectName = await this.minioService.uploadObject({ ...media, buffer: mediaBuffer })
+  async add(uploadFile: FileUploadInput, user?: User): Promise<File> {
     return this.prismaService.file.create({
       data: {
-        name: media.filename,
-        key: objectName,
+        name: uploadFile.fileName,
+        key: uploadFile.name,
         bucket: this.minioService.getBucket(),
-        mimetype: media.mimetype,
         userId: user?.id,
       },
     })
+  }
+
+  /**
+   * Проверка правильности файлового имени
+   * @param name
+   */
+  async checkFileName(name: string): Promise<boolean> {
+    const nameSchema = Joi.string()
+      .required()
+      .pattern(/^(.+)\.[a-zA-Z0-9]{1,5}$/)
+    try {
+      await nameSchema.validateAsync(name)
+      return true
+    } catch (e) {
+      return false
+    }
+  }
+
+  /**
+   * Получение ссылки на загрузку файла
+   * @param fileName - имя предполагаемого файла
+   */
+  async getPresignedPutUrl(fileName: string): Promise<FileUploadType> {
+    if (await this.checkFileName(fileName)) {
+      const [bucket, name, presignedUrl] = await this.minioService.getPresignedPutUrl(fileName)
+      return {
+        fileName,
+        bucket,
+        name,
+        presignedUrl,
+      }
+    }
+    throw new NotAcceptableException('Неверное название файла')
   }
 }

@@ -12,8 +12,6 @@ export type Scalars = {
   Float: number;
   /** A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format. */
   DateTime: any;
-  /** The `Upload` scalar type represents a file upload. */
-  Upload: any;
 };
 
 export type File = {
@@ -26,8 +24,6 @@ export type File = {
   id: Scalars['ID'];
   /** Название файла в баскете */
   key: Scalars['String'];
-  /** Медиа файла */
-  mimetype: Scalars['String'];
   /** Название файла */
   name: Scalars['String'];
   /** Дата обновления */
@@ -35,6 +31,20 @@ export type File = {
   /** Файл пользователя, если null - файл системный */
   user?: Maybe<User>;
   userId?: Maybe<Scalars['Int']>;
+};
+
+export type FileUploadInput = {
+  bucket: Scalars['String'];
+  fileName: Scalars['String'];
+  name: Scalars['String'];
+};
+
+export type FileUploadType = {
+  __typename?: 'FileUploadType';
+  bucket: Scalars['String'];
+  fileName: Scalars['String'];
+  name: Scalars['String'];
+  presignedUrl: Scalars['String'];
 };
 
 export type Gender =
@@ -61,12 +71,18 @@ export type MutationRegisterArgs = {
 
 
 export type MutationUploadAvatarArgs = {
-  media: Scalars['Upload'];
+  fileUpload: FileUploadInput;
 };
 
 export type Query = {
   __typename?: 'Query';
   me: User;
+  presignedPutUrl: FileUploadType;
+};
+
+
+export type QueryPresignedPutUrlArgs = {
+  fileName: Scalars['String'];
 };
 
 export type Role =
@@ -75,7 +91,6 @@ export type Role =
 
 export type User = {
   __typename?: 'User';
-  _count: UserCount;
   /** Флаг активности пользователя */
   active: Scalars['Boolean'];
   /** Аватар пользователя */
@@ -108,11 +123,6 @@ export type User = {
 export type UserAvgAggregate = {
   __typename?: 'UserAvgAggregate';
   id?: Maybe<Scalars['Float']>;
-};
-
-export type UserCount = {
-  __typename?: 'UserCount';
-  files: Scalars['Int'];
 };
 
 export type UserCountAggregate = {
@@ -210,7 +220,21 @@ export type RegisterMutationVariables = Exact<{
 
 export type RegisterMutation = { __typename?: 'Mutation', register?: { __typename: 'UserLoginType', accessToken: string, user: { __typename: 'User', id: string, username: string, avatar?: string | null, email: string, lastName: string, firstName: string, sirName?: string | null, birthday?: any | null, role: Role, gender: Gender, active: boolean, createdAt: any, updatedAt: any } } | null };
 
+export type UploadAvatarMutationVariables = Exact<{
+  fileUpload: FileUploadInput;
+}>;
+
+
+export type UploadAvatarMutation = { __typename?: 'Mutation', uploadAvatar: { __typename: 'User', id: string, avatar?: string | null } };
+
 export type MeQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type MeQuery = { __typename?: 'Query', me: { __typename: 'User', id: string, username: string, avatar?: string | null, email: string, lastName: string, firstName: string, sirName?: string | null, birthday?: any | null, role: Role, gender: Gender, active: boolean, createdAt: any, updatedAt: any } };
+
+export type PresignedPutObjectQueryVariables = Exact<{
+  fileName: Scalars['String'];
+}>;
+
+
+export type PresignedPutObjectQuery = { __typename?: 'Query', presignedPutUrl: { __typename: 'FileUploadType', fileName: string, name: string, bucket: string, presignedUrl: string } };

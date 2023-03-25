@@ -5,6 +5,7 @@ import { InjectMinioClient } from '@minio/minio.decorators'
 import { MinioClient } from '@minio/minio.interfaces'
 import { ConfigService } from '@nestjs/config'
 import { BufferedFileInterface } from '@minio/dto/buffered-file.interface'
+import { GraphQLError } from 'graphql'
 
 @Injectable()
 export class MinioService {
@@ -31,8 +32,7 @@ export class MinioService {
    * @return objectName
    */
   async uploadObject(file: BufferedFileInterface): Promise<string> {
-    const hashedFileName = crypto.createHash('md5').update(Date.now().toString()).digest('hex')
-    const ext = file.filename.substring(file.filename.lastIndexOf('.'), file.filename.length)
+    const [hashedFileName, ext] = this.hashedName(file.filename)
 
     const objectName = `${hashedFileName}.${ext}`
     const metaData = {
@@ -44,6 +44,31 @@ export class MinioService {
       throw new HttpException(`Error put object to s3: ${e}`, HttpStatus.BAD_REQUEST)
     }
     return objectName
+  }
+
+  /**
+   * Получение хешированного имени файла
+   * @param name
+   */
+  hashedName(name: string): string[] {
+    const hashedFileName = crypto.createHash('md5').update(Date.now().toString()).digest('hex')
+    const ext = name.substring(name.lastIndexOf('.'), name.length)
+    return [hashedFileName, ext]
+  }
+
+  /**
+   * Получение ссылки для загрузки файла в s3
+   * @param fileName
+   */
+  async getPresignedPutUrl(fileName: string): Promise<[string, string, string]> {
+    const [hashedFileName, ext] = this.hashedName(fileName)
+    try {
+      const fileName = `${hashedFileName}${ext}`
+      const presignedUrl = await this.minioClient.presignedPutObject(this.bucket, fileName)
+      return [this.bucket, fileName, presignedUrl]
+    } catch (e) {
+      throw new GraphQLError(`Error create presigned url: ${e}`)
+    }
   }
 
   /**
