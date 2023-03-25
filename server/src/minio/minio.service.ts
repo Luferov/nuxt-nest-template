@@ -4,7 +4,6 @@ import { HttpException, HttpStatus, Injectable } from '@nestjs/common'
 import { InjectMinioClient } from '@minio/minio.decorators'
 import { MinioClient } from '@minio/minio.interfaces'
 import { ConfigService } from '@nestjs/config'
-import { BufferedFileInterface } from '@minio/dto/buffered-file.interface'
 import { GraphQLError } from 'graphql'
 
 @Injectable()
@@ -31,10 +30,10 @@ export class MinioService {
    * @param file
    * @return objectName
    */
-  async uploadObject(file: BufferedFileInterface): Promise<string> {
+  async uploadObject(file): Promise<string> {
     const [hashedFileName, ext] = this.hashedName(file.filename)
 
-    const objectName = `${hashedFileName}.${ext}`
+    const objectName = `${hashedFileName}${ext}`
     const metaData = {
       'Content-Type': file.mimetype,
     }
