@@ -3,11 +3,11 @@ import { ConfigModule, ConfigService } from '@nestjs/config'
 import { JwtModule } from '@nestjs/jwt'
 import { PassportModule } from '@nestjs/passport'
 import { UsersModule } from '@users/users.module'
+import { PrismaService } from '@common/services/prisma.service'
 import { AuthResolver } from './auth.resolver'
 import { AuthService } from './auth.service'
 import { JwtStrategy, LocalStrategy } from './strategies'
 import { bcryptServiceProvider, passportServiceProvider } from './providers'
-import { PrismaService } from '@common/services/prisma.service'
 
 @Module({
   imports: [

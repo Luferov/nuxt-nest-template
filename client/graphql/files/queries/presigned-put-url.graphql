@@ -1,0 +1,9 @@
+query PresignedPutObject($fileName: String!) {
+  presignedPutUrl(fileName: $fileName) {
+    fileName
+    name
+    bucket
+    presignedUrl
+    __typename
+  }
+}

@@ -4,7 +4,7 @@ import { User } from '@generated/user'
 import { AuthService } from './auth.service'
 import { LocalAuthGuard } from './auth.guard'
 import { UserLoginInput, UserLoginType, UserRegisterInput } from './dto'
-import { CurrentUser } from '@auth/auth.decorators'
+import { CurrentUser } from './auth.decorators'
 
 @Resolver(() => User)
 export class AuthResolver {

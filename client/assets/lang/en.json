@@ -1,3 +1,23 @@
 {
-  "title": "Template for nuxt"
+  "title": "Partsorder",
+  "auth": {
+    "title": "Авторизация",
+    "register": "Регистрация",
+    "login": "Войти",
+    "username": "Логин",
+    "password": "Пароль",
+    "passwordConfirmation": "Повторите пароль",
+    "pc": "Пароли должны совпадать",
+    "email": "Email",
+    "lastName": "Фамилия",
+    "firstName": "Имя",
+    "sirName": "Отчество",
+    "singing": "Войти",
+    "doRegister": "Зарегистрироваться",
+    "logout": "Выйти",
+    "error": "Ошибка авторизации"
+  },
+  "profile": {
+    "me": "Профиль"
+  }
 }

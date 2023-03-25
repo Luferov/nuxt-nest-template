@@ -24,7 +24,8 @@
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
     "generate-types": "prisma generate --watch",
-    "generate": "prisma generate && eslint \"src/@generated/**/*.ts\" --fix"
+    "generate": "prisma generate && eslint \"src/@generated/**/*.ts\" --fix",
+    "seed": "prisma db seed"
   },
   "dependencies": {
     "@nestjs/apollo": "^10.2.0",
@@ -48,6 +49,7 @@
     "helmet": "^6.0.1",
     "joi": "^17.8.3",
     "lodash": "^4.17.21",
+    "minio": "^7.0.32",
     "passport": "^0.6.0",
     "passport-jwt": "^4.0.1",
     "passport-local": "^1.0.0",
@@ -63,7 +65,9 @@
     "@nestjs/schematics": "^9.0.4",
     "@nestjs/testing": "^9.3.9",
     "@types/bcrypt": "^5.0.0",
+    "@types/graphql-upload": "^15.0.2",
     "@types/jest": "^29.4.0",
+    "@types/minio": "^7.0.17",
     "@types/node": "^18.14.6",
     "@types/passport-jwt": "^3.0.8",
     "@types/supertest": "^2.0.12",
@@ -101,13 +105,18 @@
     "coverageDirectory": "../coverage",
     "testEnvironment": "node",
     "moduleNameMapper": {
-      "@generated/(.*)$": "<rootDir>/@generated/$1",
+      "@minio/(.*)$": "<rootDir>/minio/$1",
       "@common/(.*)$": "<rootDir>/common/$1",
       "@auth/(.*)$": "<rootDir>/auth/$1",
-      "@users": "<rootDir>/users/$1"
+      "@users": "<rootDir>/users/$1",
+      "@files/(.*)$": "<rootDir>/files/$1",
+      "@generated/(.*)$": "<rootDir>/@generated/$1"
     }
   },
   "resolutions": {
     "ts-morph": "^16"
+  },
+  "prisma": {
+    "seed": "ts-node prisma/seed.ts"
   }
 }

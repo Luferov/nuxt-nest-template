@@ -1,10 +1,11 @@
 import { Test, TestingModule } from '@nestjs/testing'
-import { AuthResolver } from './auth.resolver'
-import { AuthService } from '@auth/auth.service'
 import { PrismaService } from '@common/services/prisma.service'
 import { JwtService } from '@nestjs/jwt'
 import { ConfigService } from '@nestjs/config'
-import { bcryptServiceProvider, passportServiceProvider } from '@auth/providers'
+
+import { AuthResolver } from './auth.resolver'
+import { AuthService } from './auth.service'
+import { bcryptServiceProvider, passportServiceProvider } from './providers'
 
 describe('AuthResolver', () => {
   let resolver: AuthResolver

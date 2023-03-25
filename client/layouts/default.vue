@@ -4,7 +4,7 @@ import AppBar from '~/components/common/AppBar.vue'
 <template>
   <v-app>
     <app-bar />
-    <v-main class="bg-cyan-900">
+    <v-main>
       <slot />
     </v-main>
   </v-app>

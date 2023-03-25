@@ -6,27 +6,39 @@ services:
     image: postgres:latest
     restart: unless-stopped
     environment:
-      POSTGRES_DB: template
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: 1234
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
     ports:
-      - "5432:5432"
+      - "${DB_PORT}:5432"
     volumes:
-      - './db/postgres/data:/var/lib/postgresql/data'
+      - './infrastructure/postgres/data:/var/lib/postgresql/data'
 
-  pgadmin:
-    container_name: pgadmin-nuxt-template
-    image: dpage/pgadmin4
+  minio:
+    container_name: minio
+    image: minio/minio
+    command: server /data --console-address ":9001"
     environment:
-      PGADMIN_DEFAULT_EMAIL: pgadmin4@pgadmin.org
-      PGADMIN_DEFAULT_PASSWORD: admin
+      MINIO_ROOT_USER: ${MINIO_ROOT_USER}
+      MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD}
     ports:
-      - '5050:80'
+      - "9000:9000"
+      - "9001:9001"
+    volumes:
+      - './infrastructure/s3/data:/data'
+
+  minio-client:
+    container_name: minio-client
+    image: minio/mc
+    entrypoint: ['/bin/sh', '-c']
+    command:
+      - |
+        mc alias set local http://minio:9000 ${MINIO_ROOT_USER} ${MINIO_ROOT_PASSWORD}
+        mc mb --ignore-existing local/${MINIO_BUCKET}
+        mc anonymous set download local/${MINIO_BUCKET}
     depends_on:
-      - postgres
-    links:
-      - postgres
-  
+      - minio
+
   redis:
     container_name: redis-nuxt-template
     image: redis:latest

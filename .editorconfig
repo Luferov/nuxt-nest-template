@@ -40,6 +40,8 @@ ij_html_quote_style = double
 
 [{*.ats,*.cts,*.mts,*.ts}]
 ij_typescript_use_double_quotes = false
+ij_javascript_enforce_trailing_comma = keep
+ij_typescript_enforce_trailing_comma = keep
 
 [{*.htm,*.html,*.ng,*.sht,*.shtm,*.shtml}]
 ij_html_quote_style = double

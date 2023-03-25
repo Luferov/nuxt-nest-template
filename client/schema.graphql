@@ -5,8 +5,8 @@
 type UserCountAggregate {
   id: Int!
   username: Int!
-  avatar: Int!
   email: Int!
+  avatar: Int!
   lastName: Int!
   firstName: Int!
   sirName: Int!
@@ -30,8 +30,8 @@ type UserSumAggregate {
 type UserMinAggregate {
   id: Int
   username: String
-  avatar: String
   email: String
+  avatar: String
   lastName: String
   firstName: String
   sirName: String
@@ -62,8 +62,8 @@ enum Gender {
 type UserMaxAggregate {
   id: Int
   username: String
-  avatar: String
   email: String
+  avatar: String
   lastName: String
   firstName: String
   sirName: String
@@ -75,16 +75,42 @@ type UserMaxAggregate {
   updatedAt: DateTime
 }
 
+type File {
+  """Идентификатор файла"""
+  id: ID!
+
+  """Название файла"""
+  name: String!
+
+  """Название файла в баскете"""
+  key: String!
+
+  """Название баскета для хранения файла"""
+  bucket: String!
+
+  """Дата создания"""
+  createdAt: DateTime!
+
+  """Дата обновления"""
+  updatedAt: DateTime!
+  userId: Int
+
+  """Файл пользователя, если null - файл системный"""
+  user: User
+}
+
 type User {
   """Идентификатор пользователя"""
   id: ID!
 
   """Логин пользователя"""
   username: String!
-  avatar: String
 
   """Email пользователя"""
   email: String!
+
+  """Аватар пользователя"""
+  avatar: String
 
   """Фамилия"""
   lastName: String!
@@ -112,6 +138,14 @@ type User {
 
   """Дата обновления"""
   updatedAt: DateTime!
+  files: [File!]
+}
+
+type FileUploadType {
+  fileName: String!
+  bucket: String!
+  name: String!
+  presignedUrl: String!
 }
 
 type UserLoginType {
@@ -121,11 +155,13 @@ type UserLoginType {
 
 type Query {
   me: User!
+  presignedPutUrl(fileName: String!): FileUploadType!
 }
 
 type Mutation {
   login(userLoginInput: UserLoginInput!): UserLoginType!
   register(userRegisterInput: UserRegisterInput!): UserLoginType
+  uploadAvatar(fileUpload: FileUploadInput!): User!
 }
 
 input UserLoginInput {
@@ -143,4 +179,10 @@ input UserRegisterInput {
 
   """Date of birthday """
   birthday: DateTime
+}
+
+input FileUploadInput {
+  fileName: String!
+  bucket: String!
+  name: String!
 }
