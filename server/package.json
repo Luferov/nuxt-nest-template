@@ -64,7 +64,7 @@
   "devDependencies": {
     "@nestjs/cli": "^9.2.0",
     "@nestjs/schematics": "^9.0.4",
-    "@nestjs/testing": "^9.3.9",
+    "@nestjs/testing": "^9.3.12",
     "@types/bcrypt": "^5.0.0",
     "@types/jest": "^29.4.0",
     "@types/minio": "^7.0.17",
