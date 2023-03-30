@@ -1,12 +1,25 @@
 http:
   routers:
     minio:
-      entryPoints: 'http'
+      entryPoints:
+        - 'http'
+        - 'https'
       service: minio
+      rule: Host(`localhost`) && Path(`/storage`)
+    minio-admin:
+      entryPoints:
+        - 'http'
+        - 'https'
+      service: minio-admin
       rule: Host(`minio.localhost`)
 
   services:
     minio:
       loadBalancer:
         servers:
+          - url: http://minio:9000
+    minio-admin:
+      loadBalancer:
+        servers:
           - url: http://minio:9001
+
