@@ -1,0 +1,12 @@
+http:
+  routers:
+    minio:
+      entryPoints: 'http'
+      service: minio
+      rule: Host(`minio.localhost`)
+
+  services:
+    minio:
+      loadBalancer:
+        servers:
+          - url: http://minio:9001

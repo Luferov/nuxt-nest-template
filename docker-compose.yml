@@ -1,8 +1,39 @@
 version: '3.9'
 
 services:
+  traefik:
+    container_name: traefik-template
+    image: traefik:v2.9
+    ports:
+      - '443:443'
+      - '80:80'
+    security_opt:
+      - no-new-privileges:true
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./infrastructure/traefik/traefik.yml:/etc/traefik/traefik.yml
+      - ./infrastructure/traefik/custom:/custom
+      - ./infrastructure/ssl:/ssl
+      # - .infrastructure/traefik/acme.json:/etc/acme.json
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.traefik.entrypoints=http"
+      - "traefik.http.routers.traefik.rule=Host(`traefik.localhost`)"
+      - "traefik.http.routers.traefik.service=api@internal"
+      - "traefik.http.middlewares.traefik-auth.basicauth.users=admin:$$apr1$$7TWQEQau$$q5iJq2d/QJUZVp4HYavc7/"
+      - "traefik.http.routers.traefik.middlewares=traefik-auth"
+      - "traefik.http.services.traefik-traefik.loadbalancer.server.port=888"
+
+  portainer:
+    container_name: portainer-template
+    image: portainer/portainer-ce:latest
+    restart: always
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./data/portainer:/data
+
   postgres:
-    container_name: postgres-nuxt-template
+    container_name: postgres-template
     image: postgres:latest
     restart: unless-stopped
     environment:
@@ -12,23 +43,20 @@ services:
     ports:
       - "${DB_PORT}:5432"
     volumes:
-      - './infrastructure/postgres/data:/var/lib/postgresql/data'
+      - './data/postgres/data:/var/lib/postgresql/data'
 
   minio:
-    container_name: minio
+    container_name: minio-template
     image: minio/minio
     command: server /data --console-address ":9001"
     environment:
       MINIO_ROOT_USER: ${MINIO_ROOT_USER}
       MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD}
-    ports:
-      - "9000:9000"
-      - "9001:9001"
     volumes:
-      - './infrastructure/s3/data:/data'
+      - './data/s3/data:/data'
 
   minio-client:
-    container_name: minio-client
+    container_name: minio-client-template
     image: minio/mc
     entrypoint: ['/bin/sh', '-c']
     command:

@@ -28,3 +28,9 @@ Libraries:
 ```shell
 ln -s ./server/.env .env
 ```
+
+### Пароль для traefik
+
+```shell
+echo $(htpasswd -nb user password) | sed -e s/\\$/\\$\\$/g
+```
