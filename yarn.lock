@@ -2328,10 +2328,10 @@
     lodash "4.17.21"
     uuid "9.0.0"
 
-"@nestjs/core@^9.3.9":
-  version "9.3.9"
-  resolved "https://registry.yarnpkg.com/@nestjs/core/-/core-9.3.9.tgz#694caf785e0209175479637f11be79a930d0c0d6"
-  integrity sha512-9g1A1G9eirLXEpH21rc6dKb08zHc2+adhCRz8NW39hbejcsxxD72FApJzt4QBQAKvu862ixt/tdpStnFT7lOSw==
+"@nestjs/core@^9.3.12":
+  version "9.3.12"
+  resolved "https://registry.yarnpkg.com/@nestjs/core/-/core-9.3.12.tgz#b1c06b56ff5c8ad41e841688c6763aa9748a2395"
+  integrity sha512-Qe0ZjJo7bOlfudn7KHLppYrt5i4k1nR1+9d5ppYat2bb5knCIT4kIqblj666n+22/2zvsHRiTo015cLyLKsLRQ==
   dependencies:
     uid "2.0.1"
     "@nuxtjs/opencollective" "0.3.2"
@@ -12445,7 +12445,7 @@ ts-log@^2.2.3:
   resolved "https://registry.yarnpkg.com/ts-log/-/ts-log-2.2.5.tgz#aef3252f1143d11047e2cb6f7cfaac7408d96623"
   integrity sha512-PGcnJoTBnVGy6yYNFxWVNkdcAuAMstvutN9MgDJIV6L0oG8fB+ZNNy1T+wJzah8RPGor1mZuPQkVfXNDpy9eHA==
 
-"ts-morph@>=11 <=16", ts-morph@^16:
+"ts-morph@>=11 <=16":
   version "16.0.0"
   resolved "https://registry.yarnpkg.com/ts-morph/-/ts-morph-16.0.0.tgz#35caca7c286dd70e09e5f72af47536bf3b6a27af"
   integrity sha512-jGNF0GVpFj0orFw55LTsQxVYEUOCWBAbR5Ls7fTYE5pQsbW18ssTb/6UXx/GYAEjS+DQTp8VoTw0vqYMiaaQuw==
