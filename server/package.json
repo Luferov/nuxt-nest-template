@@ -48,7 +48,7 @@
     "graphql-tools": "^8.3.19",
     "graphql-type-json": "^0.3.2",
     "helmet": "^6.0.1",
-    "joi": "^17.8.3",
+    "joi": "^17.9.1",
     "lodash": "^4.17.21",
     "minio": "^7.0.33",
     "passport": "^0.6.0",
