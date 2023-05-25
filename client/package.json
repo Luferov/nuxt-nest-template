@@ -23,7 +23,7 @@
     "@graphql-codegen/introspection": "^3.0.1",
     "@graphql-codegen/schema-ast": "^3.0.1",
     "@graphql-codegen/typescript": "^3.0.2",
-    "@graphql-codegen/typescript-document-nodes": "^3.0.2",
+    "@graphql-codegen/typescript-document-nodes": "^4.0.0",
     "@graphql-codegen/typescript-operations": "^3.0.2",
     "@graphql-codegen/typescript-vue-apollo": "^3.3.7",
     "@nuxt/devtools": "^0.2.5",
