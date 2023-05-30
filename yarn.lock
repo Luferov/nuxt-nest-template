@@ -1315,10 +1315,10 @@
   resolved "https://registry.yarnpkg.com/@esbuild/win32-x64/-/win32-x64-0.17.13.tgz#eca2698440d931b5a0fb8a5a29388c17adcb6bf5"
   integrity sha512-pZ/NIgz861XaUPlIkPFjP55nJ4PJa0o/CD4zgeRb1Q9FVE+8GvdB6ifJcK05jRhny5hKExhnRFIdgHmmCYH8vg==
 
-"@eslint-community/eslint-utils@^4.2.0":
-  version "4.2.0"
-  resolved "https://registry.yarnpkg.com/@eslint-community/eslint-utils/-/eslint-utils-4.2.0.tgz#a831e6e468b4b2b5ae42bf658bea015bf10bc518"
-  integrity sha512-gB8T4H4DEfX2IV9zGDJPOBgP1e/DbfCPDTtEqUMckpvzS1OYtva8JdFYBqMwYk7xAQ429WGF/UPqn8uQ//h2vQ==
+"@eslint-community/eslint-utils@^4.2.0", "@eslint-community/eslint-utils@^4.3.0":
+  version "4.4.0"
+  resolved "https://registry.yarnpkg.com/@eslint-community/eslint-utils/-/eslint-utils-4.4.0.tgz#a23514e8fb9af1269d5f7788aa556798d61c6b59"
+  integrity sha512-1/sA4dwrzBAyeUoQ6oxahHKmrZvsnLCg4RfxW3ZFGGmQkSNQPFNLV9CUEFQP1x9EYXHTo5p6xdhZM1Ne9p/AfA==
   dependencies:
     eslint-visitor-keys "^3.3.0"
 
@@ -6389,17 +6389,17 @@ eslint-plugin-prettier@^4.2.1:
   dependencies:
     prettier-linter-helpers "^1.0.0"
 
-eslint-plugin-vue@^9.4.0, eslint-plugin-vue@^9.9.0:
-  version "9.9.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-vue/-/eslint-plugin-vue-9.9.0.tgz#ac788ebccd2eb94d846a507df55da50693b80c91"
-  integrity sha512-YbubS7eK0J7DCf0U2LxvVP7LMfs6rC6UltihIgval3azO3gyDwEGVgsCMe1TmDiEkl6GdMKfRpaME6QxIYtzDQ==
+eslint-plugin-vue@^9.14.1, eslint-plugin-vue@^9.4.0:
+  version "9.14.1"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-vue/-/eslint-plugin-vue-9.14.1.tgz#3b0c9857642dac547c7564031cfb09d283eafdd4"
+  integrity sha512-LQazDB1qkNEKejLe/b5a9VfEbtbczcOaui5lQ4Qw0tbRBbQYREyxxOV5BQgNDTqGPs9pxqiEpbMi9ywuIaF7vw==
   dependencies:
-    eslint-utils "^3.0.0"
+    "@eslint-community/eslint-utils" "^4.3.0"
     natural-compare "^1.4.0"
     nth-check "^2.0.1"
     postcss-selector-parser "^6.0.9"
     semver "^7.3.5"
-    vue-eslint-parser "^9.0.1"
+    vue-eslint-parser "^9.3.0"
     xml-name-validator "^4.0.0"
 
 eslint-scope@5.1.1, eslint-scope@^5.1.1:
@@ -12445,7 +12445,7 @@ ts-log@^2.2.3:
   resolved "https://registry.yarnpkg.com/ts-log/-/ts-log-2.2.5.tgz#aef3252f1143d11047e2cb6f7cfaac7408d96623"
   integrity sha512-PGcnJoTBnVGy6yYNFxWVNkdcAuAMstvutN9MgDJIV6L0oG8fB+ZNNy1T+wJzah8RPGor1mZuPQkVfXNDpy9eHA==
 
-"ts-morph@>=11 <=16", ts-morph@^16:
+"ts-morph@>=11 <=16":
   version "16.0.0"
   resolved "https://registry.yarnpkg.com/ts-morph/-/ts-morph-16.0.0.tgz#35caca7c286dd70e09e5f72af47536bf3b6a27af"
   integrity sha512-jGNF0GVpFj0orFw55LTsQxVYEUOCWBAbR5Ls7fTYE5pQsbW18ssTb/6UXx/GYAEjS+DQTp8VoTw0vqYMiaaQuw==
@@ -13086,10 +13086,10 @@ vue-devtools-stub@^0.1.0:
   resolved "https://registry.yarnpkg.com/vue-devtools-stub/-/vue-devtools-stub-0.1.0.tgz#a65b9485edecd4273cedcb8102c739b83add2c81"
   integrity sha512-RutnB7X8c5hjq39NceArgXg28WZtZpGc3+J16ljMiYnFhKvd8hITxSWQSQ5bvldxMDU6gG5mkxl1MTQLXckVSQ==
 
-vue-eslint-parser@^9.0.1, vue-eslint-parser@^9.0.3:
-  version "9.1.0"
-  resolved "https://registry.yarnpkg.com/vue-eslint-parser/-/vue-eslint-parser-9.1.0.tgz#0e121d1bb29bd10763c83e3cc583ee03434a9dd5"
-  integrity sha512-NGn/iQy8/Wb7RrRa4aRkokyCZfOUWk19OP5HP6JEozQFX5AoS/t+Z0ZN7FY4LlmWc4FNI922V7cvX28zctN8dQ==
+vue-eslint-parser@^9.0.3, vue-eslint-parser@^9.3.0:
+  version "9.3.0"
+  resolved "https://registry.yarnpkg.com/vue-eslint-parser/-/vue-eslint-parser-9.3.0.tgz#775a974a0603c9a73d85fed8958ed9e814a4a816"
+  integrity sha512-48IxT9d0+wArT1+3wNIy0tascRoywqSUe2E1YalIC1L8jsUGe5aJQItWfRok7DVFGz3UYvzEI7n5wiTXsCMAcQ==
   dependencies:
     debug "^4.3.4"
     eslint-scope "^7.1.1"
