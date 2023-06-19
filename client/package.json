@@ -49,7 +49,7 @@
     "@nuxtjs/tailwindcss": "^6.6.4",
     "@pinia/nuxt": "^0.4.7",
     "@vee-validate/i18n": "^4.8.3",
-    "@vueuse/core": "^9.13.0",
+    "@vueuse/core": "^10.2.0",
     "graphql-tag": "^2.12.6",
     "nuxt": "^3.3.2",
     "pinia": "^2.0.33",
